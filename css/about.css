@@ -28,7 +28,12 @@ body {
   text-align: center;
   border-radius: 4px;
 }
-
+.award-image-container:hover {
+  transform: scale(1.1); /* Slightly scale up */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
+  cursor: pointer;
+}
 .award-image-container img {
   max-width: 100%;
   height: auto;

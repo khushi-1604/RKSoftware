@@ -42,6 +42,7 @@ body {
   padding: 10px;
   text-align: center;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .award-image-container img {
@@ -136,7 +137,11 @@ body {
     transform: translateX(0);
   }
 }
-
+.award-image-container:hover {
+  transform: scale(1.1); /* Slightly scale up */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
+}
 /* Basic responsive adjustments */
 @media (max-width: 768px) {
   .container {
@@ -169,6 +174,12 @@ body {
     padding: 10px;
     text-align: center;
     border-radius: 4px;
+    cursor: pointer;
+  }
+  .award-image-container:hover {
+    transform: scale(1.1); /* Slightly scale up */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth transitions */
   }
   .about-us {
     flex: 0.5; /* Take up half the width for buttons */

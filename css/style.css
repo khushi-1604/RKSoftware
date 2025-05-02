@@ -1,0 +1,237 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  overflow-x: hidden;
+}
+
+header {
+  background-color: #e0eba8f5;
+  color: #4615d8;
+  padding: 1rem 0;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 30; /* Ensure header is above video and tagline */
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+}
+
+.companyname {
+  font-weight: bold;
+  font-size: 3.5rem;
+  text-align: left;
+}
+
+.about-us {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  padding-top: 60px;
+  position: relative;
+}
+.button-container {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: center; /* Center buttons horizontally within the container */
+  z-index: 20; /* Ensure buttons are above the video */
+}
+
+.animate-left-button {
+  background-color: #e0eba8f5; /* Example button color */
+  border-radius: 50%; /* Make it a circle */
+  width: 60px; /* Force a specific width for a perfect circle */
+  height: 55px;
+  color: #0c022c;
+  font-weight: bolder;
+  padding: 0; /* Remove padding, we'll control size with width/height */
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  position: absolute; /* Position them initially in the center */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 21; /* Ensure individual buttons are above the container if needed */
+  animation: slideLeft 0.5s ease-in-out forwards; /* Apply the keyframe animation */
+  text-align: center; /* Center text horizontally */
+  line-height: 60px; /* Make line-height equal to the height for vertical centering */
+  display: flex; /* Alternatively, use flexbox for centering */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  margin-bottom: 25px;
+}
+.animate-left-button:hover {
+  height: 90px;
+  width: 90px;
+  background-color: #4615d8;
+  color: #e0eba8f5;
+  transition: 0s;
+}
+.button-container > button:last-child {
+  margin-bottom: 0;
+}
+/* Individual animation delays for each button */
+.button-container > button:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.button-container > button:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.button-container > button:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.button-container > button:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.button-container > button:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+@keyframes slideLeft {
+  0% {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  100% {
+    left: 5%;
+    transform: translateX(0);
+  }
+}
+
+.about-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Video in the background */
+  /* ... other styles for .about-video ... */
+}
+.tagline {
+  font-style: italic;
+  background-color: rgba(199, 201, 232, 0.3);
+  color: #0e0e0e;
+  font-size: 4vw;
+  margin-bottom: 1rem;
+  margin-top: 20rem;
+  margin-left: 80px;
+  z-index: 10; /* Keep tagline above the video */
+  text-align: end;
+}
+
+.about-video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(1.5px);
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 0.5rem 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20; /* Ensure footer is above the video */
+  font-size: 0.8rem;
+}
+
+/* Responsive adjustments for smaller screens (e.g., mobile) */
+@media (max-width: 768px) {
+  header {
+    font-style: italic;
+    background-color: rgba(199, 201, 232, 0.3);
+    color: #0e0e0e;
+    font-size: 4vw;
+    margin-bottom: 1rem;
+    z-index: 10; /* Keep tagline above the video */
+    text-align: center;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+  .animate-left-button {
+    border-radius: 0%;
+    clip-path: polygon(
+      0% 20%,
+      60% 20%,
+      60% 0%,
+      100% 50%,
+      60% 100%,
+      60% 80%,
+      0% 80%
+    );
+    text-align: center;
+    height: 50px;
+    width: auto;
+    padding: 10px;
+  }
+  .animate-left-button:hover {
+    height: 70px;
+    width: 70px;
+  }
+  .companyname {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 0.5rem 0;
+  }
+
+  nav ul li a {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+  }
+
+  .tagline {
+    font-size: 8vw;
+    margin-top: 20vh;
+    padding: 10px 20px;
+  }
+}
+
+/* Further adjustments for even smaller screens */
+@media (max-width: 480px) {
+  header {
+    z-index: 30; /* Ensure header stays above the video on very small screens */
+  }
+
+  .tagline {
+    font-size: 10vw;
+  }
+}

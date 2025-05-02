@@ -321,3 +321,45 @@ Animation for left buttons on larger screens */
     transform: translateX(0);
   }
 }
+/* Base styles for the WhatsApp link */
+.contact-form a {
+  position: absolute;
+  /* Adjust these values to place it where you initially want it for smaller/default screens */
+  top: 10px;
+  right: 10px;
+  z-index: 10; /* Ensure it's above the form if needed */
+}
+
+.contact-form a img {
+  height: 50px;
+  width: 50px;
+}
+
+/* Media query for larger screens (e.g., desktops) */
+@media (min-width: 769px) {
+  .contact-form a {
+    /* Adjust the top value to move it above */
+    top: -60px; /* Negative value to move it up (adjust as needed based on image height and desired spacing) */
+    /* Keep the right value to stick it to the right corner */
+    right: 10px;
+  }
+
+  .contact-form a img {
+    /* You might want to adjust the size for larger screens if needed */
+    height: 60px;
+    width: 60px;
+  }
+}
+
+/* You might also need to adjust for very large screens with another media query */
+@media (min-width: 1200px) {
+  .contact-form a {
+    right: 10px; /* Adjust spacing for wider layouts */
+    top: 170px;
+  }
+
+  .contact-form a img {
+    height: 70px;
+    width: 70px;
+  }
+}

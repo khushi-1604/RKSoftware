@@ -181,32 +181,82 @@ body {
     gap: 20px;
   }
 
+  .row {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically by default */
+    gap: 20px;
+    align-items: stretch; /* Make items take full width */
+  }
+
   .about-us {
-    width: 100%;
+    display: flex;
+    flex-direction: column; /* Stack content within about-us */
+    justify-content: center;
     align-items: center;
+    padding: 1rem;
+    position: relative;
+    width: 100%; /* Full width on smaller screens */
+    box-sizing: border-box;
+    padding-top: 20px; /* Adjust top padding */
   }
 
   .button-container {
-    flex-direction: row; /* Buttons in a row on smaller screens */
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row; /* Arrange buttons horizontally */
+    align-items: center; /* Vertically center buttons */
+    justify-content: center; /* Horizontally center buttons */
+    z-index: 20;
+    /*flex-wrap: wrap; /* Allow buttons to wrap to the next line */
   }
 
   .animate-left-button {
-    width: auto;
-    margin: 5px;
-    border-radius: 50%; /* Make them circles again */
-    padding: 10px;
-    height: 60px !important;
-    width: 55px !important;
-    min-width: 50px;
-    min-height: 50px;
+    background-color: #4615d8;
+    border-radius: 50%; /* Attempt to make it a circle */
+    width: 55px !important; /* Force equal width */
+    height: 55px !important; /* Force equal height */
+    color: #e0eba8f5;
+    font-weight: bolder;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem; /* Slightly smaller font */
+    position: relative; /* Remove absolute positioning for stacking */
+    left: auto;
+    transform: translateX(0);
+    z-index: 21;
     text-align: center;
-    line-height: 30px; /* Adjust for circle */
-    display: flex;
+    line-height: 55px; /* Vertically center text */
+    display: inline-flex; /* Allows width/height and inline flow */
     justify-content: center;
     align-items: center;
+    margin: 5px; /* Smaller margins for wrapping */
+    padding: 0;
+  }
+
+  .animate-left-button:hover {
+    height: 70px !important; /* Slightly larger on hover */
+    width: 70px !important;
+    border-radius: 50%;
+    background-color: #5a28eb; /* Slightly darker hover color */
+    color: #e0eba8f5;
+    transition: transform 0.2s ease-in-out; /* Smooth hover transition */
+    transform: scale(1.05); /* Slight scale on hover */
+    line-height: 70px; /* Adjust line-height on hover */
+  }
+
+  .button-container > button:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Remove animation for smaller screens for simplicity */
+  @keyframes slideLeft {
+    0% {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    100% {
+      left: 5%;
+      transform: translateX(0);
+    }
   }
 
   .clients-section {

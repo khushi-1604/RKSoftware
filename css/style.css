@@ -16,6 +16,9 @@ header {
   left: 0;
   width: 100%;
   z-index: 30; /* Ensure header is above video and tagline */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .logo img {
@@ -175,7 +178,7 @@ footer {
   }
 
   .logo {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   .animate-left-button {
     border-radius: 0%;
@@ -200,7 +203,7 @@ footer {
   .companyname {
     text-align: center;
     margin-bottom: 10px;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
   }
 
   nav ul {

@@ -11,21 +11,57 @@
       window.onload = function () {
         const sentenceElement = document.getElementById("mySentence");
         const textToSpeak = sentenceElement.textContent;
+        const currentURL = window.location.href;
+        const playedKey = `ttsPlayedSession_${encodeURIComponent(currentURL)}`;
+        const hasPlayed = sessionStorage.getItem(playedKey);
 
-        if ("speechSynthesis" in window) {
-          const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        if ("speechSynthesis" in window && !hasPlayed) {
+          let maleVoice;
 
-          // Optional: Customize the speech
-          utterance.voice = speechSynthesis
-            .getVoices()
-            .find((voice) => voice.lang === "en-US"); // You can change the language
-          utterance.rate = 0.8; // Speed of speech (0.1 to 1.0)
-          utterance.pitch = 1; // Pitch of speech (0 to 2)
+          const speakWithMaleVoice = () => {
+            if (maleVoice) {
+              const utterance = new SpeechSynthesisUtterance(textToSpeak);
+              utterance.voice = maleVoice;
+              utterance.rate = 0.8;
+              utterance.pitch = 1;
+              speechSynthesis.speak(utterance);
+              sessionStorage.setItem(playedKey, "true");
+            } else {
+              console.log("Male voice not found.");
+              // Optionally speak with a fallback voice if desired
+              const utterance = new SpeechSynthesisUtterance(textToSpeak);
+              speechSynthesis.speak(utterance);
+              sessionStorage.setItem(playedKey, "true");
+            }
+          };
 
-          speechSynthesis.speak(utterance);
+          speechSynthesis.onvoiceschanged = () => {
+            const voices = speechSynthesis.getVoices();
+            maleVoice = voices.find((voice) =>
+              voice.name.toLowerCase().includes("male")
+            );
+            speakWithMaleVoice();
+          };
+
+          // Initial check for voices (may be available immediately)
+          const initialVoices = speechSynthesis.getVoices();
+          maleVoice = initialVoices.find((voice) =>
+            voice.name.toLowerCase().includes("male")
+          );
+          if (initialVoices.length > 0 && maleVoice) {
+            speakWithMaleVoice();
+          } else if (initialVoices.length > 0 && !maleVoice) {
+            // Speak with a fallback if no male voice is immediately available
+            const utterance = new SpeechSynthesisUtterance(textToSpeak);
+            speechSynthesis.speak(utterance);
+            sessionStorage.setItem(playedKey, "true");
+          }
+        } else if ("speechSynthesis" in window && hasPlayed) {
+          console.log(
+            `Text-to-speech has already played on this link in this session: ${currentURL}`
+          );
         } else {
           console.log("Speech synthesis is not supported in this browser.");
-          // Optionally display a message to the user
         }
       };
     </script>

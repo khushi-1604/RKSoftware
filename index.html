@@ -7,8 +7,31 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <script>
+      window.onload = function () {
+        const sentenceElement = document.getElementById("mySentence");
+        const textToSpeak = sentenceElement.textContent;
+
+        if ("speechSynthesis" in window) {
+          const utterance = new SpeechSynthesisUtterance(textToSpeak);
+
+          // Optional: Customize the speech
+          utterance.voice = speechSynthesis
+            .getVoices()
+            .find((voice) => voice.lang === "en-US"); // You can change the language
+          utterance.rate = 0.8; // Speed of speech (0.1 to 1.0)
+          utterance.pitch = 1; // Pitch of speech (0 to 2)
+
+          speechSynthesis.speak(utterance);
+        } else {
+          console.log("Speech synthesis is not supported in this browser.");
+          // Optionally display a message to the user
+        }
+      };
+    </script>
     <header>
       <div class="companyname">RK Software</div>
+      <p id="mySentence" style="display: none">Welcome to RK Software</p>
 
       <div class="circle-container">
         <div class="circle"></div>

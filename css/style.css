@@ -238,3 +238,29 @@ footer {
     font-size: 10vw;
   }
 }
+.circle-container {
+  position: relative; /* For absolute positioning of the image */
+  width: 40px; /* Adjust as needed */
+  height: 40px; /* Adjust as needed */
+}
+
+.circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%; /* Creates a circle */
+  background-color: #e0eba8f5; /* Optional: Background color for the circle */
+  /* You can also use a background image for the circle */
+}
+
+.image-above-circle {
+  position: absolute; /* Positions relative to the container */
+  top: 0;
+  bottom: 10;
+  left: 0;
+  width: 100%;
+  height: 80%;
+  object-fit: contain; /* Ensures the image covers the container without distortion */
+  /* Optional: Add border-radius to crop the image into a circle */
+  /* border-radius: 50%; */
+  /* You can also use a background-image and overflow: hidden on the circle for cropping */
+}
